@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Tour Du Lịch - Vietjet Travel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="image/logo.jpg" alt="Vietjet Logo">
+        <div>
+          <span class="brand-tagline">VIETJET TRAVEL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="flights.html" class="nav-link">Chuyến Bay</a>
+        <a href="tours.html" class="nav-link active">Tour Du Lịch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:19001886" class="hotline-pill">
+          <span class="hotline-icon">📞</span> 1900 1886
+        </a>
+        <a href="cart.html" class="cart-btn">
+          <span>🛒</span>
+          <span>Giỏ Hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= BREADCRUMB / BANNER ================= -->
+  <div style="background: var(--bg-white); border-bottom: 1px solid var(--border-light); padding: 24px 0;">
+    <div class="container">
+      <h1 style="font-size: 1.6rem; font-weight: 800;">Tour Du Lịch Trọn Gói Bay Cùng Vietjet</h1>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Khám phá các điểm đến hấp dẫn nhất với lịch trình chất lượng, khách sạn tiện nghi và vé máy bay khứ hồi</p>
+    </div>
+  </div>
+
+  <!-- ================= MAIN LAYOUT (2 COLUMNS) ================= -->
+  <main class="container layout-2col">
+    <!-- CỘT TRÁI: BỘ LỌC TOUR -->
+    <aside class="filter-sidebar">
+      <div class="filter-header">
+        <h3><span>🗺️</span> Bộ Lọc Tour</h3>
+        <button id="btnResetTourFilter" class="btn-reset-filter">Đặt lại</button>
+      </div>
+
+      <!-- Sắp xếp giá -->
+      <div class="filter-group">
+        <div class="filter-title">Sắp Xếp Giá Tour</div>
+        <select id="tourSort" class="form-control" style="height: 40px; font-size: 0.88rem;">
+          <option value="price_asc">Giá: Thấp đến Cao</option>
+          <option value="price_desc">Giá: Cao đến Thấp</option>
+        </select>
+      </div>
+
+      <!-- Hãng hàng không bay cùng -->
+      <div class="filter-group">
+        <div class="filter-title">Hãng Hàng Không Vận Chuyển</div>
+        <div class="filter-checkbox-list">
+          <label class="custom-checkbox">
+            <input type="radio" name="tourAirline" value="all" checked>
+            <span>Tất cả các hãng</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourAirline" value="VietJet Air">
+            <span>VietJet Air</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourAirline" value="Vietnam Airlines">
+            <span>Vietnam Airlines</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourAirline" value="Singapore Airlines">
+            <span>Singapore Airlines</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourAirline" value="Vietravel Airlines">
+            <span>Vietravel Airlines</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Khung giờ cất cánh -->
+      <div class="filter-group">
+        <div class="filter-title">Thời Gian Cất Cánh (Giờ)</div>
+        <div class="filter-checkbox-list">
+          <label class="custom-checkbox">
+            <input type="radio" name="tourTimeSlot" value="all" checked>
+            <span>Tất cả khung giờ</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourTimeSlot" value="morning">
+            <span>Buổi sáng (06:00 - 12:00)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourTimeSlot" value="afternoon">
+            <span>Buổi chiều (12:00 - 18:00)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="tourTimeSlot" value="evening">
+            <span>Buổi tối (18:00 - 24:00)</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CỘT PHẢI: DANH SÁCH TOUR -->
+    <section>
+      <div class="results-header">
+        <div class="results-count">
+          Tìm thấy <span id="toursCountNum">0</span> tour du lịch hấp dẫn
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Giá tour trọn gói bao gồm vé máy bay
+        </div>
+      </div>
+
+      <!-- Lưới danh sách các tour -->
+      <div class="tours-grid" id="toursListContainer" style="grid-template-columns: repeat(2, 1fr);">
+        <!-- Render bằng tours.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Vietjet Travel Portal. Chạy trên công nghệ SQLite Client-side & Vanilla JS.</div>
+        <div>Màu nhận diện: <strong style="color:var(--primary-red);">#EE1D23</strong> (Vietjet Red)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tours.js"></script>
+</body>
+</html>

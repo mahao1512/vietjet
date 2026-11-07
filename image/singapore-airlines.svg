@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <rect width="100%" height="100%" fill="#001844" rx="8"/>
+  <path d="M25 45 L45 22 L65 45 L48 42 L42 55 L35 44 Z" fill="#e5aa38"/>
+  <text x="80" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#ffffff">SINGAPORE AIRLINES</text>
+  <text x="82" y="60" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e5aa38" letter-spacing="1.5">A GREAT WAY TO FLY</text>
+</svg>

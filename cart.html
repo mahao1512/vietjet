@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng & Đặt Chỗ - Vietjet Travel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+  <!-- EmailJS Browser SDK (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="image/logo.jpg" alt="Vietjet Logo">
+        <div>
+          <span class="brand-tagline">VIETJET TRAVEL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="flights.html" class="nav-link">Chuyến Bay</a>
+        <a href="tours.html" class="nav-link">Tour Du Lịch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:19001886" class="hotline-pill">
+          <span class="hotline-icon">📞</span> 1900 1886
+        </a>
+        <a href="cart.html" class="cart-btn">
+          <span>🛒</span>
+          <span>Giỏ Hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= BANNER ================= -->
+  <div style="background: var(--bg-white); border-bottom: 1px solid var(--border-light); padding: 20px 0;">
+    <div class="container">
+      <h1 style="font-size: 1.6rem; font-weight: 800;">Giỏ Hàng & Đăng Ký Đặt Chỗ</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Kiểm tra các chuyến bay & tour du lịch đã chọn, nhập thông tin để nhận vé điện tử</p>
+    </div>
+  </div>
+
+  <!-- ================= MAIN CART CONTENT ================= -->
+  <main class="container">
+    <div class="cart-grid">
+      <!-- CỘT TRÁI: DANH SÁCH MỤC TRONG GIỎ HÀNG -->
+      <section class="cart-items-card">
+        <div class="cart-card-header">
+          <h2>Các Dịch Vụ Đã Chọn (<span id="cartCountTitle">0</span>)</h2>
+          <button id="btnClearAllCart" class="btn btn-outline btn-sm" style="color:var(--danger); border-color:#fca5a5;">
+            🗑️ Xóa Toàn Bộ Giỏ Hàng
+          </button>
+        </div>
+
+        <div id="cartItemsContainer">
+          <!-- Render bảng giỏ hàng hoặc thông báo trống bằng cart.js -->
+        </div>
+      </section>
+
+      <!-- CỘT PHẢI: FORM THÔNG TIN KHÁCH HÀNG & THANH TOÁN -->
+      <aside class="checkout-card">
+        <div class="cart-card-header" style="margin-bottom: 16px;">
+          <h2>Thông Tin Người Đặt</h2>
+        </div>
+
+        <form id="checkoutForm">
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Họ và Tên *</label>
+            <input type="text" id="custName" class="form-control" placeholder="Ví dụ: Nguyễn Văn Hải" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Số Điện Thoại (10 số) *</label>
+            <input type="tel" id="custPhone" class="form-control" placeholder="Ví dụ: 0901234567" pattern="[0-9]{10}" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Email Nhận Vé Điện Tử *</label>
+            <input type="email" id="custEmail" class="form-control" placeholder="Ví dụ: khachhang@gmail.com" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Số CCCD / Hộ Chiếu</label>
+            <input type="text" id="custIdCard" class="form-control" placeholder="Số căn cước công dân hoặc Passport">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label">Địa Chỉ Liên Hệ</label>
+            <input type="text" id="custAddress" class="form-control" placeholder="Tỉnh / Thành phố cư trú">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label class="form-label">Ghi Chú Yêu Cầu Thêm</label>
+            <textarea id="custNotes" class="form-control" rows="2" style="height:auto; padding:10px 14px;" placeholder="Ví dụ: Yêu cầu ghế gần cửa sổ, ăn chay..."></textarea>
+          </div>
+
+          <!-- Tóm tắt chi phí -->
+          <div style="background:var(--bg-subtle); padding:16px; border-radius:var(--radius-sm); margin-bottom:20px;">
+            <div class="cart-summary-row">
+              <span style="color:var(--text-muted);">Tạm tính dịch vụ:</span>
+              <strong id="summarySubtotal">0 ₫</strong>
+            </div>
+            <div class="cart-summary-row">
+              <span style="color:var(--text-muted);">Thuế & Phí dịch vụ:</span>
+              <strong style="color:var(--success);">Đã bao gồm</strong>
+            </div>
+            <div class="cart-summary-row">
+              <span style="color:var(--text-muted);">Phí xuất vé điện tử:</span>
+              <strong style="color:var(--success);">Miễn phí</strong>
+            </div>
+            <div class="cart-total-row">
+              <span>Tổng Cộng:</span>
+              <span id="summaryTotal">0 ₫</span>
+            </div>
+          </div>
+
+          <button type="submit" id="btnSubmitOrder" class="btn btn-primary btn-block btn-lg">
+            Đăng Ký & Xác Nhận Đặt Chỗ ➔
+          </button>
+
+          <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:12px; line-height:1.4;">
+            Bằng việc nhấn Đăng ký, bạn đồng ý với Điều lệ vận chuyển và Chính sách bảo mật của Vietjet Travel.
+          </p>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ================= SUCCESS CONFIRMATION MODAL ================= -->
+  <div class="modal-overlay" id="orderSuccessModal">
+    <div class="modal-content">
+      <div class="modal-icon-success">✓</div>
+      <h2 class="modal-title">Đặt Chỗ Thành Công!</h2>
+      <p style="color:var(--text-main); font-weight:600;">Cảm ơn quý khách đã tin tưởng dịch vụ của Vietjet Travel.</p>
+      
+      <div class="modal-pnr-box">
+        <div class="modal-pnr-label">MÃ ĐẶT CHỖ (BOOKING PNR)</div>
+        <div class="modal-pnr-code" id="modalPnrCode">VJ-88219</div>
+      </div>
+
+      <p class="modal-desc" id="modalDescText">
+        Một email xác nhận chi tiết lịch trình và vé điện tử đã được gửi từ đại diện <strong>nvhai061993@gmail.com</strong> tới hộp thư của bạn.
+      </p>
+
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <button id="btnCloseModal" class="btn btn-primary btn-block">
+          Quay Về Trang Chủ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Vietjet Travel Portal. Chạy trên công nghệ SQLite Client-side & Vanilla JS.</div>
+        <div>Màu nhận diện: <strong style="color:var(--primary-red);">#EE1D23</strong> (Vietjet Red)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

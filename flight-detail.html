@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Chuyến Bay - Vietjet Travel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="image/logo.jpg" alt="Vietjet Logo">
+        <div>
+          <span class="brand-tagline">VIETJET TRAVEL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="flights.html" class="nav-link active">Chuyến Bay</a>
+        <a href="tours.html" class="nav-link">Tour Du Lịch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:19001886" class="hotline-pill">
+          <span class="hotline-icon">📞</span> 1900 1886
+        </a>
+        <a href="cart.html" class="cart-btn">
+          <span>🛒</span>
+          <span>Giỏ Hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= BREADCRUMB ================= -->
+  <div style="background: var(--bg-white); border-bottom: 1px solid var(--border-light); padding: 16px 0;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <a href="flights.html" style="color:var(--primary-red); font-weight:700; font-size:0.9rem;">
+          ← Quay lại danh sách chuyến bay
+        </a>
+      </div>
+      <div style="font-size:0.85rem; color:var(--text-muted);" id="flightDetailBreadcrumb">
+        Hành trình bay chi tiết
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NỘI DUNG CHI TIẾT CHUYẾN BAY ================= -->
+  <main class="container" style="padding: 40px 20px 60px; max-width: 980px;">
+    <!-- Khung thông tin tổng quan chặng bay -->
+    <div id="flightSummaryCard" style="background:#fff; border:1px solid var(--border-light); border-radius:var(--radius-md); padding:28px; box-shadow:var(--shadow-sm); margin-bottom: 30px;">
+      <!-- Render bằng JavaScript -->
+    </div>
+
+    <!-- Khối Chọn Hạng Vé (Phổ Thông vs Thương Gia) -->
+    <section>
+      <div class="section-header" style="text-align:left; margin-bottom: 20px;">
+        <span class="section-subtitle">Tùy Chọn Hạng Vé</span>
+        <h2 class="section-title" style="font-size: 1.6rem;">Chọn Hạng Dịch Vụ Phù Hợp Với Bạn</h2>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Lựa chọn hạng vé để tận hưởng các đặc quyền hành lý, tiện nghi khoang bay và ẩm thực theo sở thích.</p>
+      </div>
+
+      <div class="cabin-grid" id="cabinOptionsGrid">
+        <!-- Card 1: Hạng Phổ Thông -->
+        <div class="cabin-card selected" id="cardEconomy" onclick="selectCabin('economy')">
+          <div class="cabin-header">
+            <div>
+              <div class="cabin-name">Hạng Phổ Thông (Economy)</div>
+              <span class="badge badge-red-light" style="margin-top:4px;">Tiết kiệm tối ưu</span>
+            </div>
+            <div class="cabin-price" id="priceEconomyText">0 ₫</div>
+          </div>
+          <div class="cabin-features">
+            <div class="cabin-feature-item"><i>✓</i> <span>07kg hành lý xách tay tiêu chuẩn</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Ghế ngồi bọc da thoải mái</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Nước uống đóng chai miễn phí</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Được phép đổi ngày bay (áp dụng biểu phí)</span></div>
+            <div class="cabin-feature-item" style="color:var(--text-muted); opacity: 0.7;">
+              <span style="color:#cbd5e1; font-weight:bold;">✕</span> <span>Chưa bao gồm phòng chờ VIP</span>
+            </div>
+          </div>
+          <div style="margin-top:auto;">
+            <button class="btn btn-block btn-outline" id="btnSelectEconomy">Đang Chọn Hạng Này</button>
+          </div>
+        </div>
+
+        <!-- Card 2: Hạng Thương Gia -->
+        <div class="cabin-card" id="cardBusiness" onclick="selectCabin('business')">
+          <div class="cabin-header">
+            <div>
+              <div class="cabin-name">Hạng Thương Gia (SkyBoss)</div>
+              <span class="badge badge-yellow" style="margin-top:4px;">Đặc quyền dẫn đầu</span>
+            </div>
+            <div class="cabin-price" id="priceBusinessText">0 ₫</div>
+          </div>
+          <div class="cabin-features">
+            <div class="cabin-feature-item"><i>✓</i> <span><strong>40kg</strong> hành lý ký gửi + <strong>10kg</strong> xách tay</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Miễn phí <strong>Phòng chờ VIP sang trọng</strong> tại sân bay</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Ưu tiên làm thủ tục check-in & lối đi an ninh riêng</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Thưởng thức <strong>suất ăn nóng cao cấp</strong> + đồ uống không giới hạn</span></div>
+            <div class="cabin-feature-item"><i>✓</i> <span>Ghế ngồi khoang riêng êm ái, ngả lưng tối đa</span></div>
+          </div>
+          <div style="margin-top:auto;">
+            <button class="btn btn-block btn-outline-secondary" id="btnSelectBusiness">Chọn Hạng Thương Gia</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hành động Thêm Vào Giỏ Hàng -->
+      <div style="background:#fff; border:1px solid var(--border-light); border-radius:var(--radius-md); padding:24px 28px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow-sm); margin-top:20px;">
+        <div>
+          <div style="font-size:0.85rem; color:var(--text-muted);">Tổng thanh toán chuyến bay:</div>
+          <div style="font-size:1.8rem; font-weight:900; color:var(--primary-red);" id="selectedTotalPrice">0 ₫</div>
+          <div style="font-size:0.8rem; color:var(--text-muted);" id="selectedClassSummary">Đang chọn: Hạng Phổ Thông</div>
+        </div>
+
+        <div style="display:flex; gap:14px;">
+          <a href="flights.html" class="btn btn-outline-secondary btn-lg">Chọn Chuyến Khác</a>
+          <button id="btnAddToCartFlight" class="btn btn-primary btn-lg">
+            🛒 Thêm Vào Giỏ Hàng
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Vietjet Travel Portal. Chạy trên công nghệ SQLite Client-side & Vanilla JS.</div>
+        <div>Màu nhận diện: <strong style="color:var(--primary-red);">#EE1D23</strong> (Vietjet Red)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/flight-detail.js"></script>
+</body>
+</html>

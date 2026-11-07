@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Chuyến Bay - Vietjet Travel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="image/logo.jpg" alt="Vietjet Logo">
+        <div>
+          <span class="brand-tagline">VIETJET TRAVEL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Trang Chủ</a>
+        <a href="flights.html" class="nav-link active">Chuyến Bay</a>
+        <a href="tours.html" class="nav-link">Tour Du Lịch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:19001886" class="hotline-pill">
+          <span class="hotline-icon">📞</span> 1900 1886
+        </a>
+        <a href="cart.html" class="cart-btn">
+          <span>🛒</span>
+          <span>Giỏ Hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= FLIGHTS BREADCRUMB / BANNER ================= -->
+  <div style="background: var(--bg-white); border-bottom: 1px solid var(--border-light); padding: 20px 0;">
+    <div class="container">
+      <h1 style="font-size: 1.5rem; font-weight: 800;" id="searchRouteTitle">Tìm Kiếm Chuyến Bay</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem;" id="searchRouteSubtitle">Khám phá các chuyến bay giá rẻ nhất từ mạng lưới hàng không Việt Nam và quốc tế</p>
+    </div>
+  </div>
+
+  <!-- ================= MAIN LAYOUT (2 COLUMNS) ================= -->
+  <main class="container layout-2col">
+    <!-- CỘT TRÁI: BỘ LỌC (FILTER SIDEBAR) -->
+    <aside class="filter-sidebar">
+      <div class="filter-header">
+        <h3><span>⚙️</span> Bộ Lọc Chuyến Bay</h3>
+        <button id="btnResetFilter" class="btn-reset-filter">Đặt lại</button>
+      </div>
+
+      <!-- Sắp xếp giá -->
+      <div class="filter-group">
+        <div class="filter-title">Sắp Xếp Theo</div>
+        <select id="filterSort" class="form-control" style="height: 40px; font-size: 0.88rem;">
+          <option value="price_asc">Giá: Thấp đến Cao</option>
+          <option value="price_desc">Giá: Cao đến Thấp</option>
+          <option value="depart_early">Giờ cất cánh sớm nhất</option>
+        </select>
+      </div>
+
+      <!-- Loại vé / Hành trình -->
+      <div class="filter-group">
+        <div class="filter-title">Loại Vé & Hành Trình</div>
+        <div class="filter-checkbox-list">
+          <label class="custom-checkbox">
+            <input type="radio" name="filterTripType" value="all" checked>
+            <span>Tất cả chuyến bay</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="filterTripType" value="direct">
+            <span>Chỉ bay thẳng (Direct)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="filterTripType" value="multi_city">
+            <span>Nhiều thành phố / Quá cảnh</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Hãng hàng không -->
+      <div class="filter-group">
+        <div class="filter-title">Hãng Hàng Không</div>
+        <div class="filter-checkbox-list" id="airlineFilterCheckboxes">
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterAirline" value="VJ">
+            <span>VietJet Air</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterAirline" value="VN">
+            <span>Vietnam Airlines</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterAirline" value="SQ">
+            <span>Singapore Airlines</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterAirline" value="QH">
+            <span>Bamboo Airways</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterAirline" value="VU">
+            <span>Vietravel Airlines</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Thời gian cất cánh -->
+      <div class="filter-group">
+        <div class="filter-title">Thời Gian Cất Cánh (Giờ)</div>
+        <div class="filter-checkbox-list">
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterTimeSlot" value="early">
+            <span>Sáng sớm (00:00 - 06:00)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterTimeSlot" value="morning">
+            <span>Buổi sáng (06:00 - 12:00)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterTimeSlot" value="afternoon">
+            <span>Buổi chiều (12:00 - 18:00)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" name="filterTimeSlot" value="evening">
+            <span>Buổi tối (18:00 - 24:00)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Hạng dịch vụ -->
+      <div class="filter-group">
+        <div class="filter-title">Hạng Dịch Vụ Hiển Thị</div>
+        <div class="filter-checkbox-list">
+          <label class="custom-checkbox">
+            <input type="radio" name="filterCabinView" value="economy" checked>
+            <span>Hạng Phổ Thông (Economy)</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="radio" name="filterCabinView" value="business">
+            <span>Hạng Thương Gia (Business)</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CỘT PHẢI: KẾT QUẢ CHUYẾN BAY -->
+    <section>
+      <div class="results-header">
+        <div class="results-count">
+          Tìm thấy <span id="flightsCountNum">0</span> chuyến bay phù hợp
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Giá đã bao gồm thuế & phí sân bay
+        </div>
+      </div>
+
+      <!-- Container Danh Sách Thẻ Chuyến Bay -->
+      <div class="flights-list" id="flightsListContainer">
+        <!-- Render bằng flights.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Vietjet Travel Portal. Chạy trên công nghệ SQLite Client-side & Vanilla JS.</div>
+        <div>Màu nhận diện: <strong style="color:var(--primary-red);">#EE1D23</strong> (Vietjet Red)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/flights.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietjet - Bay Khắp Việt Nam, Khám Phá Thế Giới</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="image/logo.jpg" alt="Vietjet Logo">
+        <div>
+          <span class="brand-tagline">VIETJET TRAVEL</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Trang Chủ</a>
+        <a href="flights.html" class="nav-link">Chuyến Bay</a>
+        <a href="tours.html" class="nav-link">Tour Du Lịch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="tel:19001886" class="hotline-pill">
+          <span class="hotline-icon">📞</span> 1900 1886
+        </a>
+        <a href="cart.html" class="cart-btn">
+          <span>🛒</span>
+          <span>Giỏ Hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SEARCH SECTION ================= -->
+  <main>
+    <section class="hero-section" style="background-image: url('image/maybay.jpg');">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-headline">
+          <h1>Bay Cùng Vietjet - Vạn Dặm Yêu Thương</h1>
+          <p>Tìm kiếm vé máy bay giá tốt nhất và các tour du lịch trọn gói cao cấp</p>
+        </div>
+
+        <!-- Khối Form Tìm Kiếm Chuyến Bay -->
+        <div class="search-card">
+          <form id="heroFlightSearchForm">
+            <div class="flight-type-tabs">
+              <label class="radio-tab">
+                <input type="radio" name="flight_trip" value="round_trip" checked>
+                <span>Vé Khứ Hồi</span>
+              </label>
+              <label class="radio-tab">
+                <input type="radio" name="flight_trip" value="one_way">
+                <span>Vé Một Chiều</span>
+              </label>
+            </div>
+
+            <div class="search-grid">
+              <div class="form-group">
+                <label class="form-label">🛫 Điểm Khởi Hành</label>
+                <select id="searchFrom" class="form-control" required>
+                  <option value="HAN" selected>Hà Nội (HAN)</option>
+                  <option value="SGN">TP.Hồ Chí Minh (SGN)</option>
+                  <option value="DAD">Đà Nẵng (DAD)</option>
+                  <option value="PQC">Phú Quốc (PQC)</option>
+                  <option value="CXR">Nha Trang (CXR)</option>
+                  <option value="UIH">Quy Nhơn (UIH)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">🛬 Điểm Đến</label>
+                <select id="searchTo" class="form-control" required>
+                  <option value="SGN" selected>TP.Hồ Chí Minh (SGN)</option>
+                  <option value="HAN">Hà Nội (HAN)</option>
+                  <option value="DAD">Đà Nẵng (DAD)</option>
+                  <option value="PQC">Phú Quốc (PQC)</option>
+                  <option value="SIN">Singapore (SIN)</option>
+                  <option value="BKK">Bangkok (BKK)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">📅 Ngày Đi</label>
+                <input type="date" id="searchDepartDate" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">📅 Ngày Về</label>
+                <input type="date" id="searchReturnDate" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">👥 Hành Khách</label>
+                <select id="searchPassengers" class="form-control">
+                  <option value="1">1 Người lớn</option>
+                  <option value="2">2 Người lớn</option>
+                  <option value="3">3 Người lớn</option>
+                  <option value="4">4+ Người lớn</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">&nbsp;</label>
+                <button type="submit" class="btn btn-primary btn-lg" style="height: 48px;">
+                  🔍 Tìm Kiếm
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8 TOUR DU LỊCH NỔI BẬT ================= -->
+    <section class="container" style="padding: 70px 20px 40px;">
+      <div class="section-header">
+        <span class="section-subtitle">Gợi Ý Hấp Dẫn</span>
+        <h2 class="section-title">8 Tour Du Lịch Nổi Bật Nhất</h2>
+        <p class="section-desc">Hành trình trọn gói cùng hàng không tiêu chuẩn, lưu trú cao cấp và trải nghiệm văn hóa tuyệt vời</p>
+      </div>
+
+      <div class="tours-grid" id="featuredToursContainer">
+        <!-- Render từ SQLite via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ================= ĐỐI TÁC HÀNG KHÔNG ================= -->
+    <section class="airlines-showcase">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 28px;">
+          <span class="section-subtitle">Đồng Hành An Toàn</span>
+          <h2 class="section-title" style="font-size: 1.6rem;">Các Hãng Hàng Không Hàng Đầu</h2>
+          <p class="section-desc">Click vào logo để khám phá toàn bộ chuyến bay của hãng với mức giá ưu đãi</p>
+        </div>
+
+        <div class="airlines-grid" id="airlinesContainer">
+          <!-- Render từ JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROMO BANNER SERVICE ================= -->
+    <section class="container promo-section">
+      <div class="promo-card">
+        <div class="promo-content">
+          <div class="promo-tag">Dịch Vụ Hàng Không Thế Hệ Mới</div>
+          <h2 class="promo-title">Trải Nghiệm Thượng Lưu Cùng Vietjet SkyBoss</h2>
+          <p class="promo-desc">Tận hưởng phong cách dẫn đầu với quyền ưu tiên làm thủ tục, phòng chờ VIP sang trọng, ẩm thực nóng tươi ngon trên mây và chính sách hành lý miễn cước vượt trội.</p>
+          <div class="promo-features">
+            <div class="promo-feat-item"><i>✓</i> Phòng chờ VIP sang trọng</div>
+            <div class="promo-feat-item"><i>✓</i> 40kg hành lý ký gửi</div>
+            <div class="promo-feat-item"><i>✓</i> Suất ăn nóng cao cấp</div>
+            <div class="promo-feat-item"><i>✓</i> Ưu tiên quầy thủ tục</div>
+          </div>
+          <a href="flights.html" class="btn btn-primary btn-lg">Khám Phá Chuyến Bay Ngay ➔</a>
+        </div>
+        <div class="promo-media">
+          <img src="image/tiepvien.jpg" alt="Tiếp viên Vietjet phục vụ chu đáo">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="image/logo.jpg" alt="Vietjet Logo Footer">
+          <p>Vietjet Travel - Cổng dịch vụ đặt vé máy bay và tour du lịch trọn gói trực tuyến hàng đầu, kết nối hàng triệu du khách đến với vẻ đẹp bất tận của Việt Nam và thế giới.</p>
+          <div style="display:flex; gap: 10px;">
+            <span class="badge badge-red-light">Bảo mật SSL 256-bit</span>
+            <span class="badge badge-yellow">Hỗ trợ 24/7</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Về Vietjet</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="flights.html">Lịch bay mới nhất</a></li>
+            <li><a href="tours.html">Tour du lịch</a></li>
+            <li><a href="cart.html">Giỏ hàng của bạn</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quy Định & Hỗ Trợ</h4>
+          <ul class="footer-links">
+            <li><a href="#">Điều lệ vận chuyển</a></li>
+            <li><a href="#">Quy định hành lý</a></li>
+            <li><a href="#">Chính sách hoàn / đổi vé</a></li>
+            <li><a href="#">Bảo hiểm du lịch</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Tổng Đài Chăm Sóc</h4>
+          <ul class="footer-contact">
+            <li><span>📍</span> <strong>Trụ sở:</strong> 302 Kim Mã, Ba Đình, Hà Nội</li>
+            <li><span>📞</span> <strong>Hotline:</strong> 1900 1886</li>
+            <li><span>✉️</span> <strong>Email:</strong> nvhai061993@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Vietjet Travel Portal. Chạy trên công nghệ SQLite Client-side & Vanilla JS.</div>
+        <div>Màu nhận diện: <strong style="color:var(--primary-red);">#EE1D23</strong> (Vietjet Red)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderHomePageData() {
+      // 1. Render 8 Tour nổi bật
+      const toursContainer = document.getElementById('featuredToursContainer');
+      if (toursContainer && window.vietjetDB) {
+        const tours = window.vietjetDB.getFeaturedTours();
+        toursContainer.innerHTML = tours.map(tour => `
+          <article class="tour-card">
+            <div class="tour-thumb-wrapper">
+              <img src="${tour.thumbnail}" alt="${tour.title}" class="tour-thumb" loading="lazy">
+              <span class="badge badge-red tour-badge-top">Ưu Đãi Vietjet</span>
+              <span class="tour-duration-pill">⏳ ${tour.duration}</span>
+            </div>
+            <div class="tour-body">
+              <div class="tour-agency">🏢 ${tour.agency_name} &bull; ✈️ ${tour.airline_partner}</div>
+              <h3 class="tour-title">
+                <a href="tour-detail.html?id=${tour.id}">${tour.title}</a>
+              </h3>
+              <div class="tour-meta">
+                <span>📍 Xuất phát: ${tour.from_city}</span>
+              </div>
+              <div class="tour-footer">
+                <div class="tour-price-box">
+                  <span class="tour-price-label">Giá trọn gói từ:</span>
+                  <span class="tour-price-value">${window.formatCurrency(tour.price)}</span>
+                </div>
+                <a href="tour-detail.html?id=${tour.id}" class="btn btn-outline btn-sm">Xem Tour ➔</a>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // 2. Render Hãng hàng không
+      const airlinesContainer = document.getElementById('airlinesContainer');
+      if (airlinesContainer && window.vietjetDB) {
+        const airlines = window.vietjetDB.getAirlines();
+        airlinesContainer.innerHTML = airlines.map(airline => `
+          <div class="airline-card" onclick="window.location.href='flights.html?airline=${airline.code}'">
+            <img src="${airline.logo}" alt="${airline.name}" loading="lazy">
+            <div class="airline-card-name">${airline.name}</div>
+            <div class="airline-card-rating">★ ${airline.rating} (${airline.country})</div>
+          </div>
+        `).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Thiết lập ngày mặc định (ngày mai và 4 ngày sau)
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const returnDate = new Date();
+      returnDate.setDate(returnDate.getDate() + 5);
+
+      const departInput = document.getElementById('searchDepartDate');
+      const returnInput = document.getElementById('searchReturnDate');
+
+      if (departInput) departInput.value = tomorrow.toISOString().split('T')[0];
+      if (returnInput) returnInput.value = returnDate.toISOString().split('T')[0];
+
+      // Xử lý bật/tắt ngày về khi chọn Một chiều
+      const tripRadios = document.querySelectorAll('input[name="flight_trip"]');
+      tripRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+          if (returnInput) {
+            returnInput.disabled = this.value === 'one_way';
+            if (this.value === 'one_way') {
+              returnInput.value = '';
+            } else {
+              returnInput.value = returnDate.toISOString().split('T')[0];
+            }
+          }
+        });
+      });
+
+      // Submit form tìm kiếm chuyến bay
+      const searchForm = document.getElementById('heroFlightSearchForm');
+      if (searchForm) {
+        searchForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const from = document.getElementById('searchFrom').value;
+          const to = document.getElementById('searchTo').value;
+          const depart = departInput.value;
+          const tripType = document.querySelector('input[name="flight_trip"]:checked').value;
+
+          window.location.href = `flights.html?from=${from}&to=${to}&depart=${depart}&type=${tripType}`;
+        });
+      }
+
+      // Render lần đầu
+      renderHomePageData();
+    });
+
+    // Khi SQLite/db.db tải xong từ server, tự động render lại dữ liệu mới nhất
+    window.addEventListener('vietjet-db-loaded', function () {
+      renderHomePageData();
+    });
+  </script>
+</body>
+</html>

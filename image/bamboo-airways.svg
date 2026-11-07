@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <rect width="100%" height="100%" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" rx="8"/>
+  <circle cx="45" cy="40" r="22" fill="#0b7e40"/>
+  <path d="M40 25 C45 35, 38 48, 52 52 C50 42, 54 32, 40 25 Z" fill="#ffffff"/>
+  <path d="M35 32 C38 40, 32 46, 42 50" stroke="#ffb81c" stroke-width="2.5" fill="none"/>
+  <text x="80" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#0b7e40">BAMBOO AIRWAYS</text>
+  <text x="82" y="60" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" fill="#003366" letter-spacing="1">HƠN CẢ MỘT CHUYẾN BAY</text>
+</svg>
